@@ -1,6 +1,7 @@
 // Get references to the tbody element, input field and button
 var $tbody = document.querySelector("tbody");
-var $dateInput = document.querySelector("#datetime");
+//var $dateInput = document.querySelector("#datetime");
+var $cityInput = document.querySelector("#city");
 var $searchBtn = document.querySelector("#search");
 
 // Add an event listener to the searchButton, call handleSearchButtonClick when clicked
@@ -28,14 +29,15 @@ function renderTable() {
 }
 function handleSearchButtonClick() {
     // Format the user's search by removing leading and trailing whitespace
-    var filterDate = $dateInput.value.trim();
-
-        // Set filteredSightings to an array of all sighting whose "date" matches the filter
-        filteredSightings = sightingsData.filter(function(sighting) {
-            var sightingDate = sighting.date;
+    //var filterDate = $dateInput.value;
+    var filterCity = $cityInput.value.trim().toLowerCase();
+    // Set filteredSightings to an array of all sightings where the inputs match the filter
+    filteredSightings = sightingsData.filter(function(sighting) {
+      //var sightingDate = sighting.date;
+      var sightingCity = sighting.city;
         
     // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
-        return sightingDate = filterDate;
+    return sightingCity === filterCity;
   });
   renderTable();
 }
